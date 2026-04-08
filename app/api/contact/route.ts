@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let resend: Resend;
 
 const autoReplyTemplates = {
   en: {
@@ -52,6 +52,9 @@ const autoReplyTemplates = {
 
 export async function POST(request: Request) {
   try {
+    if (!resend) {
+      resend = new Resend(process.env.RESEND_API_KEY!);
+    }
     const { name, email, phone, description, website, language = 'es' } = await request.json();
 
     // Honeypot check - if website field is filled, it's likely a bot
