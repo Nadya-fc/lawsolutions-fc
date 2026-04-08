@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lawsolutionsfc.com/sitemap.xml
+
+# Optimize crawl rate for legal content
+Crawl-delay: 1

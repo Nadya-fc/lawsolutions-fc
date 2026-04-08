@@ -19,6 +19,7 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
@@ -39,3 +40,32 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# AI/Editor files
+.qoder/
+.agents/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+CLAUDE.md
+AGENTS.md
+README.md
+
+# OS files
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Local development
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cache
+.cache/
+*.cache
