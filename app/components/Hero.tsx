@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   const { t } = useLanguage();
-  const phoneNumber = 'tel:+13238804017';
+  const phoneNumber = 'tel:+18584399983';
 
   const scrollToForm = () => {
     const element = document.getElementById('contact');

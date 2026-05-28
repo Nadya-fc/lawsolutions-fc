@@ -17,7 +17,7 @@ const autoReplyTemplates = {
           <li>We will call you shortly to discuss your case</li>
           <li>We will connect you with a qualified attorney who can help</li>
         </ul>
-        <p>If you need immediate assistance, please call us at <strong>(323) 880-4017</strong>.</p>
+        <p>If you need immediate assistance, please call us at <strong>(858) 439-9983</strong>.</p>
         <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
         <p style="color: #666; font-size: 12px;">
           This is an automated response. Please do not reply to this email.<br />
@@ -39,7 +39,7 @@ const autoReplyTemplates = {
           <li>Lo llamaremos pronto para discutir su caso</li>
           <li>Lo conectaremos con un abogado calificado que pueda ayudarle</li>
         </ul>
-        <p>Si necesita asistencia inmediata, por favor llamenos al <strong>(323) 880-4017</strong>.</p>
+        <p>Si necesita asistencia inmediata, por favor llamenos al <strong>(858) 439-9983</strong>.</p>
         <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
         <p style="color: #666; font-size: 12px;">
           Esta es una respuesta automatica. Por favor no responda a este correo.<br />

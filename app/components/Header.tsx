@@ -27,7 +27,7 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
-  const phoneNumber = 'tel:+13238804017';
+  const phoneNumber = 'tel:+18584399983';
 
   return (
     <header

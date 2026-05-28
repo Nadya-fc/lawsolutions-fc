@@ -18,12 +18,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Abogado de Lesiones Personales California | Consulta GRATIS 24/7 | (323) 880-4017",
-  description: "Abogado de lesiones personales en Los Angeles, Orange County, San Diego, Riverside. Accidentes de auto, trabajo, resbalones. Consulta GRATIS. No paga si no gana. Disponible 24/7. Hablamos Espanol. Llame YA (323) 880-4017",
+  title: "Abogado de Lesiones Personales California | Consulta GRATIS 24/7 | (858) 439-9983",
+  description: "Abogado de lesiones personales en Los Angeles, Orange County, San Diego, Riverside. Accidentes de auto, trabajo, resbalones. Consulta GRATIS. No paga si no gana. Disponible 24/7. Hablamos Espanol. Llame YA (858) 439-9983",
   keywords: "abogado de lesiones personales california, abogado de accidentes los angeles, abogado de accidentes orange county, abogado de accidentes san diego, abogado de accidentes riverside, abogado de accidentes san bernardino, abogado de accidentes ventura, abogado de accidentes de auto, abogado de compensacion laboral, abogado de lesiones en el trabajo, consulta gratis abogado, abogado hispano california, abogado latino los angeles, abogado latino orange county, abogado latino san diego, abogado 24 horas, abogado urgente, abogado de lesiones gratis",
   openGraph: {
     title: "Abogado de Lesiones Personales California | Consulta GRATIS 24/7",
-    description: "Abogado de lesiones personales en Los Angeles, Orange County, San Diego, Riverside. Accidentes de auto, trabajo, resbalones. Consulta GRATIS. No paga si no gana. Llame YA (323) 880-4017",
+    description: "Abogado de lesiones personales en Los Angeles, Orange County, San Diego, Riverside. Accidentes de auto, trabajo, resbalones. Consulta GRATIS. No paga si no gana. Llame YA (858) 439-9983",
     type: "website",
     locale: "es_US",
     url: "https://lawsolutionsfc.com",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Abogado de Lesiones Personales California | Consulta GRATIS 24/7",
-    description: "Abogado de lesiones personales en Los Angeles, Orange County, San Diego. Consulta GRATIS. Llame YA (323) 880-4017",
+    description: "Abogado de lesiones personales en Los Angeles, Orange County, San Diego. Consulta GRATIS. Llame YA (858) 439-9983",
   },
   alternates: {
     canonical: "https://lawsolutionsfc.com",
@@ -95,7 +95,7 @@ export default function RootLayout({
               "name": "LawSolutionsFC - Abogado de Lesiones Personales California",
               "description": "Abogado de lesiones personales en Los Angeles, Orange County, San Diego, Riverside. Accidentes de auto, trabajo, resbalones. Consulta GRATIS 24/7. No paga si no gana.",
               "url": "https://lawsolutionsfc.com",
-              "telephone": "+1-323-880-4017",
+              "telephone": "+1-858-439-9983",
               "areaServed": [
                 {
                   "@type": "City",

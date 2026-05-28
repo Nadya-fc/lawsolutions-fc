@@ -108,11 +108,11 @@ export default function LeadForm() {
             {t.leadForm.successMessage}
           </h2>
           <a 
-            href="tel:+13238804017"
+            href="tel:+18584399983"
             className="inline-flex items-center px-8 py-4 bg-[#f8b146] text-white font-semibold rounded hover:bg-[#e09f3a] transition-colors mt-4"
           >
             <Phone className="w-5 h-5 mr-2" />
-            Llamar Ahora (323) 880-4017
+            Llamar Ahora (858) 439-9983
           </a>
         </div>
       </section>
