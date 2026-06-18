@@ -8,7 +8,7 @@ const content = {
   en: {
     backToHome: 'Back to Home',
     title: 'Terms of Service',
-    lastUpdated: 'Last Updated: March 18, 2026',
+    lastUpdated: 'Last Updated: June 18, 2026',
     intro: 'Please read these Terms of Service ("Terms") carefully before using the LawSolutionsFC website and services. By accessing or using our service, you agree to be bound by these Terms.',
     sections: [
       {
@@ -48,11 +48,24 @@ const content = {
       },
       {
         title: '6. Consent to Contact',
-        content: 'By submitting your information through our website, you expressly consent to be contacted by LawSolutionsFC and/or affiliated attorneys via telephone, email, text message, or other means at the contact information you provide. You understand that calls may be recorded for quality and training purposes.',
-        items: []
+        content: 'By submitting your information through our website, you expressly consent to be contacted by LawSolutionsFC, our intake team, service providers, and/or affiliated independent attorneys by telephone, SMS/text message, email, or other means at the contact information you provide, including through automated technology where permitted by law. You understand that calls may be recorded for quality and training purposes.',
+        items: [
+          'Message and data rates may apply.',
+          'Consent to receive calls, texts, or emails is not a condition of hiring an attorney or receiving legal services.',
+          'You may opt out of future communications by following instructions in the message or contacting us directly.'
+        ]
       },
       {
-        title: '7. Limitation of Liability',
+        title: '7. Tracking and Conversion Measurement',
+        content: 'By using our website, you acknowledge that we may use cookies, pixels, analytics tags, and server-side conversion APIs to measure website activity, form submissions, calls, and advertising performance.',
+        items: [
+          'These tools may include TikTok Pixel and TikTok Events API, Meta Pixel, Google Analytics 4, and Google Tag Manager.',
+          'When you submit a form, we may send hashed identifiers such as hashed email, hashed phone number, and hashed external ID to advertising platforms for conversion measurement and deduplication.',
+          'We do not use these tools to provide legal advice or determine the outcome of any legal matter.'
+        ]
+      },
+      {
+        title: '8. Limitation of Liability',
         content: 'To the maximum extent permitted by law, LawSolutionsFC shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:',
         items: [
           'Your access to or use of or inability to access or use our services',
@@ -62,27 +75,27 @@ const content = {
         ]
       },
       {
-        title: '8. Third-Party Attorneys',
+        title: '9. Third-Party Attorneys',
         content: 'Any attorneys we connect you with are independent professionals and not employees or agents of LawSolutionsFC. We do not endorse any specific attorney and are not responsible for the quality of legal services provided. You are responsible for selecting and evaluating any attorney you choose to work with.',
         items: []
       },
       {
-        title: '9. Intellectual Property',
+        title: '10. Intellectual Property',
         content: 'All content on this website, including text, graphics, logos, images, and software, is the property of LawSolutionsFC or its content suppliers and is protected by United States and international copyright laws.',
         items: []
       },
       {
-        title: '10. Governing Law',
+        title: '11. Governing Law',
         content: 'These Terms shall be governed by and construed in accordance with the laws of the State of California, without regard to its conflict of law provisions. Any legal action arising out of these Terms shall be filed in the state or federal courts located in California.',
         items: []
       },
       {
-        title: '11. Changes to Terms',
+        title: '12. Changes to Terms',
         content: 'We reserve the right to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days\' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.',
         items: []
       },
       {
-        title: '12. Contact Information',
+        title: '13. Contact Information',
         content: 'If you have any questions about these Terms, please contact us:',
         items: [
           'Email: legal@lawsolutionsfc.com',
@@ -97,7 +110,7 @@ const content = {
   es: {
     backToHome: 'Volver al Inicio',
     title: 'Terminos de Servicio',
-    lastUpdated: 'Ultima Actualizacion: 18 de marzo de 2026',
+    lastUpdated: 'Ultima Actualizacion: 18 de junio de 2026',
     intro: 'Por favor lea estos Terminos de Servicio ("Terminos") cuidadosamente antes de usar el sitio web y servicios de LawSolutionsFC. Al acceder o usar nuestro servicio, usted acepta estar sujeto a estos Terminos.',
     sections: [
       {
@@ -137,11 +150,24 @@ const content = {
       },
       {
         title: '6. Consentimiento para Contacto',
-        content: 'Al enviar su informacion a traves de nuestro sitio web, usted consiente expresamente ser contactado por LawSolutionsFC y/o abogados afiliados via telefono, correo electronico, mensaje de texto u otros medios en la informacion de contacto que proporcione. Usted entiende que las llamadas pueden ser grabadas para fines de calidad y capacitacion.',
-        items: []
+        content: 'Al enviar su informacion a traves de nuestro sitio web, usted consiente expresamente ser contactado por LawSolutionsFC, nuestro equipo de admision, proveedores de servicios y/o abogados independientes afiliados por telefono, SMS/mensaje de texto, correo electronico u otros medios en la informacion de contacto que proporcione, incluyendo mediante tecnologia automatizada cuando lo permita la ley. Usted entiende que las llamadas pueden ser grabadas para fines de calidad y capacitacion.',
+        items: [
+          'Pueden aplicar tarifas de mensajes y datos.',
+          'El consentimiento para recibir llamadas, mensajes de texto o correos electronicos no es condicion para contratar a un abogado o recibir servicios legales.',
+          'Puede optar por no recibir comunicaciones futuras siguiendo las instrucciones del mensaje o contactandonos directamente.'
+        ]
       },
       {
-        title: '7. Limitacion de Responsabilidad',
+        title: '7. Seguimiento y Medicion de Conversiones',
+        content: 'Al usar nuestro sitio web, usted reconoce que podemos utilizar cookies, pixeles, etiquetas de analitica y APIs de conversion del lado del servidor para medir actividad del sitio web, envios de formularios, llamadas y rendimiento publicitario.',
+        items: [
+          'Estas herramientas pueden incluir TikTok Pixel y TikTok Events API, Meta Pixel, Google Analytics 4 y Google Tag Manager.',
+          'Cuando envia un formulario, podemos enviar identificadores codificados como correo electronico codificado, numero de telefono codificado e ID externo codificado a plataformas publicitarias para medicion y deduplicacion de conversiones.',
+          'No utilizamos estas herramientas para proporcionar asesoria legal ni para determinar el resultado de ningun asunto legal.'
+        ]
+      },
+      {
+        title: '8. Limitacion de Responsabilidad',
         content: 'En la maxima medida permitida por la ley, LawSolutionsFC no sera responsable por danos indirectos, incidentales, especiales, consecuentes o punitivos, incluyendo sin limitacion, perdida de ganancias, datos, uso, goodwill u otras perdidas intangibles, resultantes de:',
         items: [
           'Su acceso o uso o incapacidad para acceder o usar nuestros servicios',
@@ -151,27 +177,27 @@ const content = {
         ]
       },
       {
-        title: '8. Abogados de Terceros',
+        title: '9. Abogados de Terceros',
         content: 'Cualquier abogado con el que lo conectemos son profesionales independientes y no empleados o agentes de LawSolutionsFC. No respaldamos ningun abogado especifico y no somos responsables de la calidad de los servicios legales proporcionados. Usted es responsable de seleccionar y evaluar cualquier abogado con el que elija trabajar.',
         items: []
       },
       {
-        title: '9. Propiedad Intelectual',
+        title: '10. Propiedad Intelectual',
         content: 'Todo el contenido en este sitio web, incluyendo texto, graficos, logos, imagenes y software, es propiedad de LawSolutionsFC o sus proveedores de contenido y esta protegido por las leyes de derechos de autor de Estados Unidos e internacionales.',
         items: []
       },
       {
-        title: '10. Ley Aplicable',
+        title: '11. Ley Aplicable',
         content: 'Estos Terminos se regiran e interpretaran de acuerdo con las leyes del Estado de California, sin tener en cuenta sus disposiciones de conflicto de leyes. Cualquier accion legal derivada de estos Terminos se presentara en los tribunales estatales o federales ubicados en California.',
         items: []
       },
       {
-        title: '11. Cambios a los Terminos',
+        title: '12. Cambios a los Terminos',
         content: 'Nos reservamos el derecho de modificar o reemplazar estos Terminos en cualquier momento. Si una revision es material, proporcionaremos al menos 30 dias de aviso antes de que los nuevos terminos entren en vigor. Lo que constituye un cambio material sera determinado a nuestra sola discrecion.',
         items: []
       },
       {
-        title: '12. Informacion de Contacto',
+        title: '13. Informacion de Contacto',
         content: 'Si tiene alguna pregunta sobre estos Terminos, por favor contactenos:',
         items: [
           'Correo electronico: legal@lawsolutionsfc.com',

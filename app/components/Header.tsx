@@ -5,7 +5,7 @@ import { useLanguage } from './LanguageContext';
 import { Phone, Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { trackEvent } from '../lib/tracking';
+import { getTikTokApplicationPayload, trackEvent } from '../lib/tracking';
 
 export default function Header() {
   const { language, setLanguage, t } = useLanguage();
@@ -95,7 +95,13 @@ export default function Header() {
             {/* CTA Button */}
             <a
               href={phoneNumber}
-              onClick={() => trackEvent('call_button_clicked', { location: 'header_desktop_cta' })}
+              onClick={() =>
+                trackEvent(
+                  'call_button_clicked',
+                  { location: 'header_desktop_cta', ...getTikTokApplicationPayload('Header Call Button') },
+                  { tikTokEventName: 'ClickButton' }
+                )
+              }
               className="inline-flex items-center px-4 py-2 bg-[#f8b146] text-white font-medium rounded hover:bg-[#e09f3a] transition-colors animate-pulse"
             >
               <Phone className="w-4 h-4 mr-2" />
@@ -172,7 +178,13 @@ export default function Header() {
               {/* Mobile CTA */}
               <a
                 href={phoneNumber}
-                onClick={() => trackEvent('call_button_clicked', { location: 'header_mobile_cta' })}
+                onClick={() =>
+                  trackEvent(
+                    'call_button_clicked',
+                    { location: 'header_mobile_cta', ...getTikTokApplicationPayload('Header Mobile Call Button') },
+                    { tikTokEventName: 'ClickButton' }
+                  )
+                }
                 className="inline-flex items-center justify-center px-4 py-3 bg-[#f8b146] text-white font-medium rounded hover:bg-[#e09f3a] transition-colors mx-2 animate-pulse"
               >
                 <Phone className="w-4 h-4 mr-2" />

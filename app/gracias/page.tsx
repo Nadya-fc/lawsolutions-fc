@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CookieConsent from '../components/CookieConsent';
 import { MobileStickyCta } from '../components/HomeFunnelSections';
-import { trackEvent } from '../lib/tracking';
+import { getTikTokApplicationPayload, trackEvent } from '../lib/tracking';
 
 export default function GraciasPage() {
   useEffect(() => {
@@ -32,7 +32,13 @@ export default function GraciasPage() {
 
             <a
               href="tel:+18584399983"
-              onClick={() => trackEvent('call_button_clicked', { location: 'thank_you_primary_cta' })}
+              onClick={() =>
+                trackEvent(
+                  'call_button_clicked',
+                  { location: 'thank_you_primary_cta', ...getTikTokApplicationPayload('Thank You Phone Number') },
+                  { tikTokEventName: 'ClickButton' }
+                )
+              }
               className="mb-7 inline-flex items-center justify-center text-3xl font-bold text-[#001b3d] underline-offset-4 hover:underline"
             >
               <Phone className="mr-2 h-7 w-7 text-[#f8b146]" />
@@ -42,7 +48,13 @@ export default function GraciasPage() {
             <div className="flex flex-col justify-center gap-3 sm:flex-row">
               <a
                 href="tel:+18584399983"
-                onClick={() => trackEvent('call_button_clicked', { location: 'thank_you_call_button' })}
+                onClick={() =>
+                  trackEvent(
+                    'call_button_clicked',
+                    { location: 'thank_you_call_button', ...getTikTokApplicationPayload('Thank You Call Button') },
+                    { tikTokEventName: 'ClickButton' }
+                  )
+                }
                 className="inline-flex min-h-12 items-center justify-center rounded bg-[#f8b146] px-6 py-3 font-bold text-[#001b3d] transition-colors hover:bg-[#e09f3a]"
               >
                 <Phone className="mr-2 h-5 w-5" />
@@ -89,4 +101,3 @@ export default function GraciasPage() {
     </>
   );
 }
-

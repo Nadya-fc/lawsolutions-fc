@@ -12,7 +12,7 @@ import {
   Sparkles,
   UserRoundCheck,
 } from 'lucide-react';
-import { trackEvent } from '../lib/tracking';
+import { getTikTokApplicationPayload, trackEvent } from '../lib/tracking';
 
 const phoneNumber = 'tel:+18584399983';
 
@@ -189,7 +189,13 @@ export function MobileStickyCta() {
       <div className="grid grid-cols-2 gap-3">
         <a
           href={phoneNumber}
-          onClick={() => trackEvent('call_button_clicked', { location: 'sticky_mobile_cta' })}
+          onClick={() =>
+            trackEvent(
+              'call_button_clicked',
+              { location: 'sticky_mobile_cta', ...getTikTokApplicationPayload('Mobile Call Button') },
+              { tikTokEventName: 'ClickButton' }
+            )
+          }
           className="inline-flex min-h-12 items-center justify-center rounded bg-[#f8b146] px-3 py-3 text-center font-bold text-[#001b3d]"
         >
           Llamar Ahora
@@ -205,4 +211,3 @@ export function MobileStickyCta() {
     </div>
   );
 }
-

@@ -3,7 +3,7 @@
 import React from 'react';
 import { Phone, FileText, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
-import { trackEvent } from '../lib/tracking';
+import { getTikTokApplicationPayload, trackEvent } from '../lib/tracking';
 
 export default function Hero() {
   const phoneNumber = 'tel:+18584399983';
@@ -88,7 +88,13 @@ export default function Hero() {
             </div>
             <a
               href={phoneNumber}
-              onClick={() => trackEvent('call_button_clicked', { location: 'hero_phone_number' })}
+              onClick={() =>
+                trackEvent(
+                  'call_button_clicked',
+                  { location: 'hero_phone_number', ...getTikTokApplicationPayload('Hero Phone Number') },
+                  { tikTokEventName: 'ClickButton' }
+                )
+              }
               className="text-2xl font-bold text-[#f8b146] underline-offset-4 hover:underline"
             >
               (858) 439-9983
@@ -106,7 +112,13 @@ export default function Hero() {
             </button>
             <a
               href={phoneNumber}
-              onClick={() => trackEvent('call_button_clicked', { location: 'hero_secondary_cta' })}
+              onClick={() =>
+                trackEvent(
+                  'call_button_clicked',
+                  { location: 'hero_secondary_cta', ...getTikTokApplicationPayload('Hero Call Button') },
+                  { tikTokEventName: 'ClickButton' }
+                )
+              }
               className="inline-flex min-h-14 items-center justify-center px-8 py-4 bg-white text-[#001b3d] font-bold rounded hover:bg-gray-100 transition-colors"
             >
               <Phone className="w-5 h-5 mr-2" />

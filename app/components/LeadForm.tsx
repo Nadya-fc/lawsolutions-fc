@@ -1,10 +1,16 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { AlertCircle, ArrowLeft, ArrowRight, Check, Send } from 'lucide-react';
 import { QualificationChecklist } from './HomeFunnelSections';
-import { trackEvent } from '../lib/tracking';
+import {
+  createEventId,
+  getTikTokApplicationPayload,
+  identifyTikTokUser,
+  sendTikTokServerEvent,
+  trackEvent,
+} from '../lib/tracking';
 
 type QuizData = {
   accidentType: string;
@@ -68,15 +74,46 @@ export default function LeadForm() {
   const [hasStarted, setHasStarted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [eventIds] = useState(() => ({
+    leadStarted: createEventId('lead_started'),
+    qualifiedLead: createEventId('qualified_lead'),
+    completeRegistration: createEventId('complete_registration'),
+    lead: createEventId('lead'),
+    leadSubmitted: createEventId('lead_submitted'),
+  }));
+  const hasTrackedQualifiedLead = useRef(false);
 
   const totalSteps = 5;
   const progress = useMemo(() => ((step + 1) / totalSteps) * 100, [step]);
   const isContactStep = step === 4;
 
+  useEffect(() => {
+    if (!isContactStep || hasTrackedQualifiedLead.current) return;
+
+    hasTrackedQualifiedLead.current = true;
+    const payload = {
+      accident_type: formData.accidentType,
+      accident_date: formData.accidentDate,
+      medical_care: formData.medicalCare,
+      has_attorney: formData.hasAttorney,
+    };
+    const tikTokPayload = getTikTokApplicationPayload('Contact Information Step');
+
+    trackEvent(
+      'qualified_lead',
+      { ...payload, ...tikTokPayload },
+      { eventId: eventIds.qualifiedLead, tikTokEventName: 'Contact' }
+    );
+    sendTikTokServerEvent('Contact', eventIds.qualifiedLead, {
+      ...payload,
+      ...tikTokPayload,
+    });
+  }, [eventIds.qualifiedLead, formData, isContactStep]);
+
   const markStarted = () => {
     if (!hasStarted) {
       setHasStarted(true);
-      trackEvent('lead_started', { step: 1 });
+      trackEvent('lead_started', { step: 1 }, { eventId: eventIds.leadStarted });
     }
   };
 
@@ -107,7 +144,7 @@ export default function LeadForm() {
         currentErrors.email = 'Ingrese un correo electrónico válido.';
       }
       if (!formData.consent) {
-        currentErrors.consent = 'Debe aceptar ser contactado para enviar la solicitud.';
+        currentErrors.consent = 'Debe aceptar el contacto y el procesamiento descrito para enviar la solicitud.';
       }
     }
 
@@ -163,12 +200,7 @@ export default function LeadForm() {
     ].join('\n');
 
     try {
-      trackEvent('qualified_lead', {
-        accident_type: formData.accidentType,
-        accident_date: formData.accidentDate,
-        medical_care: formData.medicalCare,
-        has_attorney: formData.hasAttorney,
-      });
+      await identifyTikTokUser(formData.email, formData.phone);
 
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -182,12 +214,35 @@ export default function LeadForm() {
           description,
           website: formData.website,
           language: 'es',
+          pageUrl: window.location.href,
+          referrer: document.referrer,
+          tiktokEventIds: {
+            lead: eventIds.lead,
+            completeRegistration: eventIds.completeRegistration,
+            leadSubmitted: eventIds.leadSubmitted,
+          },
         }),
       });
 
       if (response.ok) {
+        const tikTokPayload = getTikTokApplicationPayload('Submitted Case Evaluation');
+
         trackEvent('lead_step_completed', { step: 5, step_name: 'contact_information' });
-        trackEvent('lead_submitted', { source: 'qualification_quiz' });
+        trackEvent(
+          'CompleteRegistration',
+          { source: 'qualification_quiz', ...tikTokPayload },
+          { eventId: eventIds.completeRegistration }
+        );
+        trackEvent(
+          'Lead',
+          { source: 'qualification_quiz', ...tikTokPayload },
+          { eventId: eventIds.lead }
+        );
+        trackEvent(
+          'lead_submitted',
+          { source: 'qualification_quiz', ...tikTokPayload },
+          { eventId: eventIds.leadSubmitted }
+        );
         router.push('/gracias');
       } else {
         setErrors({ submit: 'No se pudo enviar la solicitud. Inténtelo de nuevo.' });
@@ -316,7 +371,7 @@ export default function LeadForm() {
                       className="mt-1 h-5 w-5 rounded border-gray-300 text-[#f8b146] focus:ring-[#f8b146]"
                     />
                     <span className="ml-3 text-sm leading-relaxed text-[#444444]">
-                      Acepto ser contactado por teléfono, SMS o correo electrónico.
+                      Acepto ser contactado por teléfono, SMS o correo electrónico sobre mi solicitud. También acepto el uso de tecnologías de seguimiento y eventos de conversión del lado del servidor, incluyendo identificadores codificados, como se describe en la Política de Privacidad.
                     </span>
                   </label>
                   {errors.consent && (
@@ -440,4 +495,3 @@ function InputField({
     </div>
   );
 }
-

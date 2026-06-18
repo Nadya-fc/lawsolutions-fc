@@ -5,7 +5,7 @@ import { useLanguage } from './LanguageContext';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { trackEvent } from '../lib/tracking';
+import { getTikTokApplicationPayload, trackEvent } from '../lib/tracking';
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -78,7 +78,13 @@ export default function Footer() {
               <li>
                 <a
                   href={phoneNumber}
-                  onClick={() => trackEvent('call_button_clicked', { location: 'footer_primary_phone' })}
+                  onClick={() =>
+                    trackEvent(
+                      'call_button_clicked',
+                      { location: 'footer_primary_phone', ...getTikTokApplicationPayload('Footer Primary Phone') },
+                      { tikTokEventName: 'ClickButton' }
+                    )
+                  }
                   className="flex items-center text-white/70 hover:text-[#f8b146] transition-colors"
                 >
                   <Phone className="w-4 h-4 mr-2" />
@@ -88,7 +94,13 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:+13238804017"
-                  onClick={() => trackEvent('call_button_clicked', { location: 'footer_secondary_phone' })}
+                  onClick={() =>
+                    trackEvent(
+                      'call_button_clicked',
+                      { location: 'footer_secondary_phone', ...getTikTokApplicationPayload('Footer Secondary Phone') },
+                      { tikTokEventName: 'ClickButton' }
+                    )
+                  }
                   className="flex items-center text-white/70 hover:text-[#f8b146] transition-colors"
                 >
                   <Phone className="w-4 h-4 mr-2" />

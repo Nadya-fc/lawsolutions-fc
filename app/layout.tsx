@@ -4,6 +4,7 @@ import "./globals.css";
 import { LanguageProvider } from "./components/LanguageContext";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import TikTokPixel from "./components/TikTokPixel";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -82,6 +83,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col font-sans m-0">
         <LanguageProvider>{children}</LanguageProvider>
+        <TikTokPixel />
         <Analytics />
         <SpeedInsights />
         

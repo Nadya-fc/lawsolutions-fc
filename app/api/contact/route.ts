@@ -1,7 +1,17 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
+import { sendTikTokEvents } from '../../lib/tiktokEventsServer';
 
 let resend: Resend;
+
+function getCookieValue(cookieHeader: string | null, name: string) {
+  return cookieHeader
+    ?.split('; ')
+    .find((cookie) => cookie.startsWith(`${name}=`))
+    ?.split('=')
+    .slice(1)
+    .join('=');
+}
 
 const autoReplyTemplates = {
   en: {
@@ -55,7 +65,17 @@ export async function POST(request: Request) {
     if (!resend) {
       resend = new Resend(process.env.RESEND_API_KEY!);
     }
-    const { name, email, phone, description, website, language = 'es' } = await request.json();
+    const {
+      name,
+      email,
+      phone,
+      description,
+      website,
+      language = 'es',
+      pageUrl,
+      referrer,
+      tiktokEventIds,
+    } = await request.json();
 
     // Honeypot check - if website field is filled, it's likely a bot
     if (website && website.length > 0) {
@@ -107,6 +127,96 @@ export async function POST(request: Request) {
         subject: template.subject,
         html: template.html,
       });
+    }
+
+    if (tiktokEventIds?.lead && tiktokEventIds?.leadSubmitted) {
+      try {
+        const userAgent = request.headers.get('user-agent') || undefined;
+        const ip =
+          request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+          request.headers.get('x-real-ip');
+        const cookieHeader = request.headers.get('cookie');
+        const ttclid = getCookieValue(cookieHeader, 'ttclid');
+        const ttp = getCookieValue(cookieHeader, '_ttp');
+
+        await sendTikTokEvents([
+          {
+            event: 'Lead',
+            eventId: tiktokEventIds.lead,
+            email,
+            phone,
+            pageUrl,
+            referrer,
+            userAgent,
+            ip,
+            ttclid,
+            ttp,
+            properties: {
+              source: 'qualification_quiz',
+              contents: [
+                {
+                  content_id: 'personal_injury_case_evaluation',
+                  content_type: 'service',
+                  content_name: 'Submitted Case Evaluation',
+                },
+              ],
+              currency: 'USD',
+            },
+          },
+          ...(tiktokEventIds.completeRegistration
+            ? [
+                {
+                  event: 'CompleteRegistration' as const,
+                  eventId: tiktokEventIds.completeRegistration,
+                  email,
+                  phone,
+                  pageUrl,
+                  referrer,
+                  userAgent,
+                  ip,
+                  ttclid,
+                  ttp,
+                  properties: {
+                    source: 'qualification_quiz',
+                    contents: [
+                      {
+                        content_id: 'personal_injury_case_evaluation',
+                        content_type: 'service',
+                        content_name: 'Submitted Case Evaluation',
+                      },
+                    ],
+                    currency: 'USD',
+                  },
+                },
+              ]
+            : []),
+          {
+            event: 'lead_submitted',
+            eventId: tiktokEventIds.leadSubmitted,
+            email,
+            phone,
+            pageUrl,
+            referrer,
+            userAgent,
+            ip,
+            ttclid,
+            ttp,
+            properties: {
+              source: 'qualification_quiz',
+              contents: [
+                {
+                  content_id: 'personal_injury_case_evaluation',
+                  content_type: 'service',
+                  content_name: 'Submitted Case Evaluation',
+                },
+              ],
+              currency: 'USD',
+            },
+          },
+        ]);
+      } catch (error) {
+        console.error('TikTok lead event delivery failed:', error);
+      }
     }
 
     return NextResponse.json(
