@@ -1,23 +1,15 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from './LanguageContext';
 import { Phone, Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { trackEvent } from '../lib/tracking';
 
 export default function Header() {
   const { language, setLanguage, t } = useLanguage();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -103,6 +95,7 @@ export default function Header() {
             {/* CTA Button */}
             <a
               href={phoneNumber}
+              onClick={() => trackEvent('call_button_clicked', { location: 'header_desktop_cta' })}
               className="inline-flex items-center px-4 py-2 bg-[#f8b146] text-white font-medium rounded hover:bg-[#e09f3a] transition-colors animate-pulse"
             >
               <Phone className="w-4 h-4 mr-2" />
@@ -179,6 +172,7 @@ export default function Header() {
               {/* Mobile CTA */}
               <a
                 href={phoneNumber}
+                onClick={() => trackEvent('call_button_clicked', { location: 'header_mobile_cta' })}
                 className="inline-flex items-center justify-center px-4 py-3 bg-[#f8b146] text-white font-medium rounded hover:bg-[#e09f3a] transition-colors mx-2 animate-pulse"
               >
                 <Phone className="w-4 h-4 mr-2" />

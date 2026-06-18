@@ -1,12 +1,11 @@
 'use client';
 
 import React from 'react';
-import { useLanguage } from './LanguageContext';
-import { Phone, FileText, Shield, Clock, Lock } from 'lucide-react';
+import { Phone, FileText, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
+import { trackEvent } from '../lib/tracking';
 
 export default function Hero() {
-  const { t } = useLanguage();
   const phoneNumber = 'tel:+18584399983';
 
   const scrollToForm = () => {
@@ -52,17 +51,20 @@ export default function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white leading-tight mb-6" style={{ color: '#FFFFFF' }}>
-            {t.hero.headline}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white leading-tight mb-5" style={{ color: '#FFFFFF' }}>
+            ¿Lesionado En Un Accidente?
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            {t.hero.subheadline}
+          <p className="text-2xl md:text-3xl text-white font-semibold mb-4 max-w-2xl mx-auto">
+            Solicite Una Evaluación Gratuita De Su Caso.
+          </p>
+          <p className="text-base md:text-lg text-white/85 mb-7 max-w-2xl mx-auto leading-relaxed">
+            Le ayudamos a conectarse con abogados de lesiones personales para evaluar su situación después de un accidente.
           </p>
 
           {/* Location Pills for SEO */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
+          <div className="flex flex-wrap justify-center gap-2 mb-7">
             <span className="px-3 py-1 bg-white/10 text-white/70 text-sm rounded-full">Los Angeles</span>
             <span className="px-3 py-1 bg-white/10 text-white/70 text-sm rounded-full">Orange County</span>
             <span className="px-3 py-1 bg-white/10 text-white/70 text-sm rounded-full">San Diego</span>
@@ -75,39 +77,46 @@ export default function Hero() {
             <span className="px-3 py-1 bg-white/10 text-white/70 text-sm rounded-full">Ontario</span>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <div className="mb-7 flex flex-col items-center justify-center gap-3 text-white">
+            <div className="flex items-center gap-2 text-lg font-semibold">
+              <CheckCircle2 className="h-5 w-5 text-[#f8b146]" />
+              Atención en español.
+            </div>
+            <div className="flex items-center gap-2 text-lg font-semibold">
+              <CheckCircle2 className="h-5 w-5 text-[#f8b146]" />
+              No paga si no gana.*
+            </div>
             <a
               href={phoneNumber}
-              className="inline-flex items-center px-8 py-4 bg-[#f8b146] text-white font-semibold rounded hover:bg-[#e09f3a] transition-colors animate-pulse"
+              onClick={() => trackEvent('call_button_clicked', { location: 'hero_phone_number' })}
+              className="text-2xl font-bold text-[#f8b146] underline-offset-4 hover:underline"
             >
-              <Phone className="w-5 h-5 mr-2" />
-              {t.hero.ctaCall}
+              (858) 439-9983
             </a>
-            <button
-              onClick={scrollToForm}
-              className="inline-flex items-center px-8 py-4 bg-white text-[#001b3d] font-semibold rounded hover:bg-gray-100 transition-colors"
-            >
-              <FileText className="w-5 h-5 mr-2" />
-              {t.hero.ctaForm}
-            </button>
           </div>
 
-          {/* Trust Cues */}
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
-            <div className="flex items-center text-white/80">
-              <Shield className="w-5 h-5 text-[#f8b146] mr-2" />
-              <span className="text-sm md:text-base">{t.hero.trustNoFees}</span>
-            </div>
-            <div className="flex items-center text-white/80">
-              <Clock className="w-5 h-5 text-[#f8b146] mr-2" />
-              <span className="text-sm md:text-base">{t.hero.trustFastResponse}</span>
-            </div>
-            <div className="flex items-center text-white/80">
-              <Lock className="w-5 h-5 text-[#f8b146] mr-2" />
-              <span className="text-sm md:text-base">{t.hero.trustConfidential}</span>
-            </div>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 mb-8">
+            <button
+              onClick={scrollToForm}
+              className="inline-flex min-h-14 items-center justify-center px-8 py-4 bg-[#f8b146] text-[#001b3d] font-bold rounded hover:bg-[#e09f3a] transition-colors"
+            >
+              <FileText className="w-5 h-5 mr-2" />
+              Comenzar Evaluación Gratuita
+            </button>
+            <a
+              href={phoneNumber}
+              onClick={() => trackEvent('call_button_clicked', { location: 'hero_secondary_cta' })}
+              className="inline-flex min-h-14 items-center justify-center px-8 py-4 bg-white text-[#001b3d] font-bold rounded hover:bg-gray-100 transition-colors"
+            >
+              <Phone className="w-5 h-5 mr-2" />
+              Llamar Ahora
+            </a>
           </div>
+
+          <p className="max-w-2xl mx-auto text-xs md:text-sm text-white/70">
+            *La elegibilidad y los resultados dependen de las circunstancias específicas de cada caso.
+          </p>
         </div>
       </div>
     </section>

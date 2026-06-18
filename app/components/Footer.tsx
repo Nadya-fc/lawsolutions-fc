@@ -5,9 +5,10 @@ import { useLanguage } from './LanguageContext';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { trackEvent } from '../lib/tracking';
 
 export default function Footer() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const phoneNumber = 'tel:+18584399983';
 
   return (
@@ -77,6 +78,7 @@ export default function Footer() {
               <li>
                 <a
                   href={phoneNumber}
+                  onClick={() => trackEvent('call_button_clicked', { location: 'footer_primary_phone' })}
                   className="flex items-center text-white/70 hover:text-[#f8b146] transition-colors"
                 >
                   <Phone className="w-4 h-4 mr-2" />
@@ -86,6 +88,7 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:+13238804017"
+                  onClick={() => trackEvent('call_button_clicked', { location: 'footer_secondary_phone' })}
                   className="flex items-center text-white/70 hover:text-[#f8b146] transition-colors"
                 >
                   <Phone className="w-4 h-4 mr-2" />
@@ -163,16 +166,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Mobile Sticky Call Button */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-[#f8b146] p-4 z-50 animate-pulse">
-        <a
-          href={phoneNumber}
-          className="flex items-center justify-center text-white font-semibold"
-        >
-          <Phone className="w-5 h-5 mr-2" />
-          {t.nav.callNow}
-        </a>
-      </div>
     </footer>
   );
 }

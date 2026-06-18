@@ -6,6 +6,12 @@ import LeadForm from './components/LeadForm';
 import About from './components/About';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
+import {
+  CredibilitySection,
+  MobileStickyCta,
+  TrustBar,
+  UrgencySection,
+} from './components/HomeFunnelSections';
 
 export default function Home() {
   return (
@@ -13,12 +19,16 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <TrustBar />
         <HowItWorks />
+        <CredibilitySection />
+        <UrgencySection />
         <PracticeAreas />
         <LeadForm />
         <About />
       </main>
       <Footer />
+      <MobileStickyCta />
       <CookieConsent />
     </>
   );

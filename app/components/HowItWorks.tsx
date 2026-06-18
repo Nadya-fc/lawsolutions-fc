@@ -1,27 +1,24 @@
 'use client';
 
 import React from 'react';
-import { useLanguage } from './LanguageContext';
-import { Phone, Users, Scale } from 'lucide-react';
+import { ClipboardList, SearchCheck, Scale } from 'lucide-react';
 
 export default function HowItWorks() {
-  const { t } = useLanguage();
-
   const steps = [
     {
-      icon: Phone,
-      title: t.howItWorks.step1Title,
-      description: t.howItWorks.step1Desc,
+      icon: ClipboardList,
+      title: 'Complete La Evaluación',
+      description: 'Responda unas preguntas breves sobre su accidente.',
     },
     {
-      icon: Users,
-      title: t.howItWorks.step2Title,
-      description: t.howItWorks.step2Desc,
+      icon: SearchCheck,
+      title: 'Revisamos Su Caso',
+      description: 'Nuestro equipo revisará la información enviada.',
     },
     {
       icon: Scale,
-      title: t.howItWorks.step3Title,
-      description: t.howItWorks.step3Desc,
+      title: 'Le Conectamos Con Un Abogado',
+      description: 'Si su caso califica, lo conectaremos con un abogado para una evaluación.',
     },
   ];
 
@@ -31,7 +28,7 @@ export default function HowItWorks() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#001b3d] mb-4">
-            {t.howItWorks.title}
+            ¿Cómo Funciona?
           </h2>
           <div className="w-20 h-1 bg-[#f8b146] mx-auto" />
         </div>
