@@ -103,7 +103,7 @@ export function getTikTokApplicationPayload(
         content_name: contentName,
       },
     ],
-    value: 0,
+    value: 1,
     currency: 'USD',
   };
 }
