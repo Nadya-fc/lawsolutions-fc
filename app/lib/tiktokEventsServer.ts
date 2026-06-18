@@ -34,6 +34,7 @@ function normalizePhone(phone: string) {
 export async function sendTikTokEvents(events: TikTokServerEvent[]) {
   const accessToken = process.env.TIKTOK_EVENTS_API_ACCESS_TOKEN;
   const pixelId = process.env.TIKTOK_PIXEL_ID || defaultPixelId;
+  const testEventCode = process.env.TIKTOK_TEST_EVENT_CODE;
 
   if (!accessToken) {
     return { skipped: true, reason: 'Missing TIKTOK_EVENTS_API_ACCESS_TOKEN' };
@@ -48,6 +49,7 @@ export async function sendTikTokEvents(events: TikTokServerEvent[]) {
     body: JSON.stringify({
       event_source: 'web',
       event_source_id: pixelId,
+      ...(testEventCode ? { test_event_code: testEventCode } : {}),
       data: events.map((event) => ({
         event: event.event,
         event_time: Math.floor(Date.now() / 1000),
