@@ -31,7 +31,7 @@ export default function Header() {
           <Link href="/" className="flex items-center">
             <Image
               src="/ls-fc-logo.png"
-              alt="LawSolutionsFC Logo"
+              alt="LawSolutionsFC servicio de conexión con abogados de lesiones personales"
               width={180}
               height={180}
               className="h-24 w-auto"

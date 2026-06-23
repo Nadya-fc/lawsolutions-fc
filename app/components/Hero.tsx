@@ -24,7 +24,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/hero-bg.png"
-          alt="Background"
+          alt="LawSolutionsFC conecta personas lesionadas con abogados de accidentes en California"
           fill
           className="object-cover"
           priority

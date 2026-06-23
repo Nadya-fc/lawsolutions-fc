@@ -6,6 +6,7 @@ import LeadForm from './components/LeadForm';
 import About from './components/About';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
+import SeoFaq from './components/SeoFaq';
 import {
   CredibilitySection,
   MobileStickyCta,
@@ -24,6 +25,7 @@ export default function Home() {
         <CredibilitySection />
         <UrgencySection />
         <PracticeAreas />
+        <SeoFaq />
         <LeadForm />
         <About />
       </main>
