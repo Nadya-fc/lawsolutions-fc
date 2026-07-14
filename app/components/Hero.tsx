@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { getTikTokApplicationPayload, trackEvent } from '../lib/tracking';
 
 export default function Hero() {
-  const phoneNumber = 'tel:+18584399983';
+  const phoneNumber = 'tel:+18888071855';
 
   const scrollToForm = () => {
     const element = document.getElementById('contact');
@@ -97,7 +97,7 @@ export default function Hero() {
               }
               className="text-2xl font-bold text-[#f8b146] underline-offset-4 hover:underline"
             >
-              (858) 439-9983
+              (888) 807-1855
             </a>
           </div>
 

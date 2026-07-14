@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { getTikTokApplicationPayload, trackEvent } from '../lib/tracking';
 
-const phoneNumber = 'tel:+18584399983';
+const phoneNumber = 'tel:+18888071855';
 
 export function TrustBar() {
   const items = [

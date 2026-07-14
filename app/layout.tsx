@@ -106,7 +106,7 @@ export default function RootLayout({
               "name": "LawSolutionsFC - Abogado de Lesiones Personales California",
               "description": "Abogado de lesiones personales en Los Angeles, Orange County, San Diego, Riverside. Accidentes de auto, trabajo, resbalones. Consulta GRATIS 24/7. No paga si no gana.",
               "url": "https://lawsolutionsfc.com",
-              "telephone": "+1-858-439-9983",
+              "telephone": "+1-888-807-1855",
               "areaServed": [
                 {
                   "@type": "City",

@@ -9,7 +9,7 @@ import { getTikTokApplicationPayload, trackEvent } from '../lib/tracking';
 
 export default function Footer() {
   const { t } = useLanguage();
-  const phoneNumber = 'tel:+18584399983';
+  const phoneNumber = 'tel:+18888071855';
 
   return (
     <footer className="bg-[#001b3d] text-white">
@@ -88,6 +88,22 @@ export default function Footer() {
                   className="flex items-center text-white/70 hover:text-[#f8b146] transition-colors"
                 >
                   <Phone className="w-4 h-4 mr-2" />
+                  (888) 807-1855
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+18584399983"
+                  onClick={() =>
+                    trackEvent(
+                      'call_button_clicked',
+                      { location: 'footer_secondary_phone', ...getTikTokApplicationPayload('Footer Secondary Phone') },
+                      { tikTokEventName: 'ClickButton' }
+                    )
+                  }
+                  className="flex items-center text-white/70 hover:text-[#f8b146] transition-colors"
+                >
+                  <Phone className="w-4 h-4 mr-2" />
                   (858) 439-9983
                 </a>
               </li>
@@ -97,7 +113,7 @@ export default function Footer() {
                   onClick={() =>
                     trackEvent(
                       'call_button_clicked',
-                      { location: 'footer_secondary_phone', ...getTikTokApplicationPayload('Footer Secondary Phone') },
+                      { location: 'footer_tertiary_phone', ...getTikTokApplicationPayload('Footer Tertiary Phone') },
                       { tikTokEventName: 'ClickButton' }
                     )
                   }

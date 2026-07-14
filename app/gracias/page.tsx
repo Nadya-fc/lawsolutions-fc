@@ -31,7 +31,7 @@ export default function GraciasPage() {
             </p>
 
             <a
-              href="tel:+18584399983"
+              href="tel:+18888071855"
               onClick={() =>
                 trackEvent(
                   'call_button_clicked',
@@ -42,12 +42,12 @@ export default function GraciasPage() {
               className="mb-7 inline-flex items-center justify-center text-3xl font-bold text-[#001b3d] underline-offset-4 hover:underline"
             >
               <Phone className="mr-2 h-7 w-7 text-[#f8b146]" />
-              (858) 439-9983
+              (888) 807-1855
             </a>
 
             <div className="flex flex-col justify-center gap-3 sm:flex-row">
               <a
-                href="tel:+18584399983"
+                href="tel:+18888071855"
                 onClick={() =>
                   trackEvent(
                     'call_button_clicked',
